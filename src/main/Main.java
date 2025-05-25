@@ -42,12 +42,18 @@ public class Main {
                         System.out.print("Enter Destination: ");
                         String dest = sc.nextLine();
                         dao.addTrain(new Train(id, name, source, dest));
+                        System.out.println("✅ Train added successfully!");
                         break;
 
                     case 2:
                         List<Train> trains = dao.getAllTrains();
-                        for (Train t : trains) {
-                            System.out.println(t);
+                        if (trains.isEmpty()) {
+                            System.out.println("⚠️ No trains found.");
+                        } else {
+                            System.out.println("📋 List of Trains:");
+                            for (Train t : trains) {
+                                System.out.println(t);
+                            }
                         }
                         break;
 
@@ -61,12 +67,14 @@ public class Main {
                         System.out.print("Enter new Destination: ");
                         String newDest = sc.nextLine();
                         dao.updateTrain(modId, new Train(modId, newName, newSource, newDest));
+                        System.out.println("✅ Train updated successfully!");
                         break;
 
                     case 4:
                         System.out.print("Enter Train ID to delete: ");
                         String delId = sc.nextLine();
                         dao.deleteTrain(delId);
+                        System.out.println("🗑️ Train deleted successfully!");
                         break;
 
                     case 5:
@@ -75,6 +83,7 @@ public class Main {
                         System.out.print("Enter Passenger Name: ");
                         String passenger = sc.nextLine();
                         dao.bookTrain(bookId, passenger);
+                        System.out.println("✅ Booking successful!");
                         break;
 
                     case 6:
@@ -83,22 +92,24 @@ public class Main {
                         System.out.print("Enter Passenger Name: ");
                         String cancelName = sc.nextLine();
                         dao.cancelBooking(cancelId, cancelName);
+                        System.out.println("❌ Booking cancelled successfully!");
                         break;
 
                     case 7:
+                        System.out.println("📖 Viewing All Bookings:");
                         dao.viewBookings();
                         break;
 
                     case 8:
-                        System.out.println("Thank you for using the system.");
+                        System.out.println("👋 Thank you for using the system.");
                         running = false;
                         break;
 
                     default:
-                        System.out.println("Invalid choice.");
+                        System.out.println("⚠️ Invalid choice. Please select between 1 and 8.");
                 }
             } catch (IOException e) {
-                System.out.println("An error occurred: " + e.getMessage());
+                System.out.println("❌ An error occurred: " + e.getMessage());
             }
         }
 
