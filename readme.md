@@ -46,7 +46,7 @@ Follow these steps:
 2. **Open a terminal and navigate to the `src` directory**:
 
 ```bash
-cd /path/to/RailwayReservationSystem/src
+cd /your-path/to/RailwayReservationSystem/src
 
 
 
